@@ -1,0 +1,886 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#16070e">
+<title>For Man Man🤍</title>
+
+<style>
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: #16070e;
+  color: white;
+  font-family: dancing-script;
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+}
+
+.slide {
+  display: none;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  padding: 65px 22px 90px;
+  position: relative;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+
+  background:
+    radial-gradient(circle at top, #65213c 0%, transparent 55%),
+    linear-gradient(145deg, #10050b, #350d20, #10050b);
+}
+
+.slide.active {
+  display: flex;
+  animation: fadeIn .7s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(.97);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+h1 {
+  font-size: clamp(34px, 9vw, 48px);
+  color: #ffb6cf;
+  margin: 18px 0;
+}
+
+h2 {
+  font-size: 29px;
+  color: #ffb6cf;
+  margin: 15px 0;
+}
+
+p {
+  font-size: 17px;
+  line-height: 1.8;
+  color: #f7dce6;
+  max-width: 450px;
+}
+
+.small {
+  font-size: 11px;
+  letter-spacing: 4px;
+  color: #e5a5bb;
+}
+
+button {
+  background: linear-gradient(135deg, #ff477e, #a9164b);
+  border: 1px solid #ffb6cf;
+  color: white;
+  padding: 14px 25px;
+  border-radius: 30px;
+  font-size: 15px;
+  margin: 9px;
+  cursor: pointer;
+  box-shadow: 0 0 18px #ff477e55;
+}
+
+button:active {
+  transform: scale(.95);
+}
+
+.next-button {
+  position: absolute;
+  bottom: 23px;
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+}
+
+.next-button:active {
+  transform: translateX(-50%) scale(.95);
+}
+
+.music-button {
+  position: fixed;
+  z-index: 50;
+  top: 13px;
+  right: 12px;
+  padding: 10px 15px;
+  margin: 0;
+  font-size: 12px;
+  background: #58172f;
+}
+
+.chapter {
+  position: absolute;
+  top: 23px;
+  left: 0;
+  width: 100%;
+  font-size: 11px;
+  letter-spacing: 3px;
+  color: #e6a9bd;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: #ffffff0d;
+  border: 1px solid #ffb6cf55;
+  border-radius: 22px;
+  padding: 24px 19px;
+  box-shadow: 0 0 25px #ff477e22;
+}
+
+.heart {
+  font-size: 55px;
+  animation: heartbeat 1.3s infinite;
+}
+
+@keyframes heartbeat {
+  50% { transform: scale(1.2); }
+}
+
+/* ENVELOPE */
+
+.envelope-area {
+  margin: 35px 0;
+  perspective: 700px;
+}
+
+.envelope {
+  width: 230px;
+  height: 150px;
+  position: relative;
+  background: #a92752;
+  border-radius: 8px;
+  box-shadow: 0 0 35px #ff477e66;
+}
+
+.envelope:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: #d94d78;
+  clip-path: polygon(0 0, 50% 58%, 100% 0);
+  transform-origin: top;
+  transition: transform 1s;
+  z-index: 3;
+}
+
+.envelope:after {
+  content: "❤️";
+  position: absolute;
+  font-size: 35px;
+  top: 55px;
+  left: 98px;
+  z-index: 4;
+}
+
+.envelope.open:before {
+  transform: rotateX(180deg);
+}
+
+/* QUOTES */
+
+.quote {
+  font-size: 22px;
+  line-height: 1.8;
+  color: #ffe0eb;
+  min-height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* PHOTOS */
+
+.photo {
+  width: 100%;
+  max-width: 290px;
+  height: min(43vh, 350px);
+  object-fit: cover;
+  border-radius: 18px;
+  border: 3px solid #ffb6cf;
+  box-shadow: 0 0 25px #ff477e55;
+  background: #351322;
+}
+
+.photo-number {
+  color: #ffb6cf;
+  margin-top: 12px;
+  font-size: 13px;
+}
+
+/* LETTER */
+
+.letter {
+  max-height: 60vh;
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+
+.letter p {
+  font-size: 16px;
+}
+
+/* CAKE */
+
+.cake {
+  font-size: 100px;
+  margin: 20px;
+}
+
+.candle-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin: 15px;
+}
+
+.candle {
+  font-size: 36px;
+  position: relative;
+}
+
+.flame {
+  display: block;
+  font-size: 25px;
+  animation: flicker .5s infinite alternate;
+}
+
+@keyframes flicker {
+  from { transform: scale(1) rotate(-5deg); }
+  to { transform: scale(1.15) rotate(5deg); }
+}
+
+.flame.off {
+  visibility: hidden;
+}
+
+#micStatus {
+  font-size: 13px;
+  color: #ffb6cf;
+  margin: 10px;
+  min-height: 35px;
+}
+
+/* CONFETTI */
+
+.confetti {
+  position: fixed;
+  top: -25px;
+  z-index: 100;
+  pointer-events: none;
+  animation: fall 3.5s linear forwards;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(110vh) rotate(650deg);
+    opacity: 0;
+  }
+}
+
+.footer {
+  color: #d99aae;
+  font-size: 11px;
+  margin-top: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<!-- BACKGROUND MUSIC -->
+<audio id="music" loop>
+  <source src="Theri_-_Bus_Love_Bgm(48k).mp3" type="audio/mpeg">
+</audio>
+
+<button class="music-button" id="musicBtn"
+        onclick="toggleMusic()">
+  ♫ Play Music
+</button>
+
+
+<!-- SLIDE 1: ENVELOPE -->
+<section class="slide active" id="slide1">
+
+  <div class="chapter">A SECRET MESSAGE • 01 / 06</div>
+
+  <p class="small">A SPECIAL SURPRISE</p>
+
+  <h1>Oii Papuu! ❤️</h1>
+
+  <p>A little surprise made especially for you.</p>
+
+  <div class="envelope-area">
+    <div class="envelope" id="envelope"></div>
+  </div>
+
+  <p id="envelopeText">You have one special letter waiting...</p>
+
+  <button onclick="openEnvelope()">
+    Open Your Letter 💌
+  </button>
+
+</section>
+
+
+<!-- SLIDE 2: LOVE QUOTES -->
+<section class="slide" id="slide2">
+
+  <div class="chapter">A FEW WORDS FROM THE HEART • 02 / 06</div>
+
+  <div class="heart">❤️</div>
+
+  <h2>Some Feelings Have No Words</h2>
+
+  <div class="card">
+    <p class="quote" id="quote">
+      "You are my favourite feeling in a world full of temporary moments."
+    </p>
+  </div>
+
+  <button onclick="nextQuote()">
+    Another Feeling ✨
+  </button>
+
+  <button class="next-button" onclick="goTo(3)">
+    Next Chapter →
+  </button>
+
+</section>
+
+
+<!-- SLIDE 3: PHOTOS -->
+<section class="slide" id="slide3">
+
+  <div class="chapter">OUR LITTLE MEMORIES • 03 / 06</div>
+
+  <h2>Moments To Remember 📸</h2>
+
+  <p>Every picture has a story.</p>
+
+  <img id="photo"
+       class="photo"
+       src="photo1.jpg"
+       alt="Our memory">
+
+  <div class="photo-number" id="photoNumber">
+    01 / 05
+  </div>
+
+  <button onclick="changePhoto(1)">
+    Next Photo →
+  </button>
+
+  <button class="next-button" onclick="goTo(4)">
+    Next Chapter →
+  </button>
+
+</section>
+
+
+<!-- SLIDE 4: LETTER -->
+<section class="slide" id="slide4">
+
+  <div class="chapter">A LETTER JUST FOR YOU • 04 / 06</div>
+
+  <div class="heart">💌</div>
+
+  <h2>Dear Chellow...</h2>
+
+  <div class="card letter">
+
+    <p>
+      I wish you endless happiness,beautidul opportunities and 
+        the courage to achieve every dream.
+      <br><br>
+
+      Eppavum un kudave dhan iruppenn🫂
+        .
+      <br><br>
+
+      Endha situation lavum nan unkudave dhan
+       irukenn edhukum feel panadha thango
+        namma pathukalam .
+      <br><br>
+
+      May your smile never fade,
+      may your heart always find peace,
+      and may life surprise you
+      with beautiful things.
+      <br><br>
+
+      Whatever this new chapter brings,
+      I'll always be wid you.
+      <br><br>
+
+      Happy Birthday, Thangameyyy! ❤️
+    </p>
+
+  </div>
+
+  <button class="next-button" onclick="goTo(5)">
+    One Last Surprise →
+  </button>
+
+</section>
+
+
+<!-- SLIDE 5: BIRTHDAY CAKE -->
+<section class="slide" id="slide5">
+
+  <div class="chapter">MAKE A WISH • 05 / 06</div>
+
+  <h2>Your Special Moment 🎂</h2>
+
+  <div class="cake">🎂</div>
+
+  <div class="candle-row">
+    <div class="candle">
+      <span class="flame" id="flame1">🔥</span>
+      🕯️
+    </div>
+
+    <div class="candle">
+      <span class="flame" id="flame2">🔥</span>
+      🕯️
+    </div>
+
+    <div class="candle">
+      <span class="flame" id="flame3">🔥</span>
+      🕯️
+    </div>
+  </div>
+
+  <p>Close your eyes, make a wish and blow! ✨</p>
+
+  <button onclick="blowCandles()">
+    🎂 Blow The Candles
+  </button>
+
+  <button onclick="blowCandles(doc.query.selectorAll('.flame').forEach('el>el.style.display'='none'))">
+    Tap To Blow (Alternative)
+  </button>
+
+  <p id="micStatus">
+    Microphone always allowed.
+  </p>
+
+  <button id="cakeNext"
+          class="next-button"
+          onclick="goTo(6)"
+          style="display:none">
+    See Your Final Surprise ❤️
+  </button>
+
+</section>
+
+
+<!-- SLIDE 6: FINAL SURPRISE -->
+<section class="slide" id="slide6">
+
+  <div class="chapter">MADE WITH LOVE • 06 / 06</div>
+
+  <div class="heart">❤️</div>
+
+  <p class="small">TODAY IS ALL ABOUT YOU</p>
+
+  <h1>HAPPY BIRTHDAY CHELLOWW!</h1>
+
+  <div class="card">
+
+    <p>
+      🫂😘🤍🦋
+      <br><br>
+      Unoda life la oru bestestt part ah irundhu unoda dreams, wishes, ellathayumm
+       namma onna sernthu full fill panalam thangoo🧿🖖🏻.
+      It's my promise nan eppavum unkuda iruppennn😊🌎
+      .
+      <br><br>
+
+      Keep smiling,keep shining nu lam solla maten una happy ah pathukittu 
+       nan una shine pana veikrenn☺️🪄⭐.
+      <br><br>
+
+      Unakku oru supportive wellwisher,una konjura lover,sanda podura friend, un downs la epavum unkuda 
+        irukra partner ipdi ellamavumm unaku nan irukken thangohh 🫂😘
+      <br><br>
+      A very veryyy Happiesttt Birthdayyy Chellowww
+      With love, always.❤️
+               -Vyzz💗
+    </p>
+
+  </div>
+
+  <button onclick="celebrate()">
+    Celebrate Again 🎉
+  </button>
+
+  <div class="footer">
+    A LITTLE WORLD CREATED JUST FOR YOU
+  </div>
+
+</section>
+
+
+<script>
+
+// =================================
+// CUSTOMIZE YOUR WEBSITE HERE
+// =================================
+
+// Change the names of your photos here.
+// Keep the actual image files in the same folder.
+
+const photos = [
+  "photo1.jpg",
+  "photo2.jpg",
+  "photo3.jpg",
+  "photo4.jpg",
+  "photo5.jpg"
+];
+
+// Your favourite deep love quotes.
+
+const quotes = [
+  "You are my favourite feeling in a world full of temporary moments.",
+
+  "Some souls feel like home, even in a world full of strangers.",
+
+  "I wish you could see yourself through my eyes, just once.",
+
+  "You are a beautiful chapter I never want to forget.",
+
+  "If memories could speak, mine would tell a thousand stories about you.",
+
+  "Some people become a beautiful part of our hearts without even trying."
+];
+
+
+// =================================
+// SLIDE NAVIGATION
+// =================================
+
+function goTo(number) {
+
+  document.querySelectorAll(".slide").forEach(s => {
+    s.classList.remove("active");
+  });
+
+  document.getElementById("slide" + number)
+    .classList.add("active");
+
+  if (number === 6) {
+    celebrate();
+  }
+}
+
+
+// =================================
+// ENVELOPE OPENING
+// =================================
+
+function openEnvelope() {
+
+  startMusic();
+
+  const envelope = document.getElementById("envelope");
+
+  envelope.classList.add("open");
+
+  document.getElementById("envelopeText").innerText =
+    "A little message from the heart... ❤️";
+
+  setTimeout(() => {
+    goTo(2);
+  }, 1400);
+}
+
+
+// =================================
+// BACKGROUND MUSIC
+// =================================
+
+const music = document.getElementById("music");
+
+const musicBtn = document.getElementById("musicBtn");
+
+function startMusic() {
+
+  music.play().then(() => {
+    musicBtn.innerText = "♫ Pause Music";
+  }).catch(() => {
+    musicBtn.innerText = "♫ Tap To Play";
+  });
+
+}
+
+function toggleMusic() {
+
+  if (music.paused) {
+    startMusic();
+  } else {
+    music.pause();
+    musicBtn.innerText = "♫ Play Music";
+  }
+
+}
+
+
+// =================================
+// LOVE QUOTES
+// =================================
+
+let quoteIndex = 0;
+
+function nextQuote() {
+
+  quoteIndex = (quoteIndex + 1) % quotes.length;
+
+  document.getElementById("quote").innerText =
+    '"' + quotes[quoteIndex] + '"';
+
+}
+
+
+// =================================
+// PHOTO GALLERY
+// =================================
+
+let photoIndex = 0;
+
+function changePhoto() {
+
+  photoIndex =
+    (photoIndex + direction) % photos.length;
+
+  document.getElementById("photo").src =
+    photos[photoIndex];
+
+  document.getElementById("photoNumber").innerText =
+    String(photoIndex + 1).padStart(2, "0") +
+    " / " +
+    String(photos.length).padStart(2, "0");
+
+}
+
+
+// =================================
+// BLOW THE CANDLES
+// =================================
+
+let listening = false;
+let micStream = null;
+let audioContext = null;
+
+async function listenForBlow() {
+
+  const status = document.getElementById("micStatus");
+
+  if (listening) return;
+
+  try {
+
+    if (!navigator.mediaDevices ||
+        !navigator.mediaDevices.getUserMedia) {
+
+      status.innerText =
+        "Microphone always allowed. Use Tap To Blow .";
+
+      return;
+    }
+
+    // Pause music to reduce false sound detection.
+    const wasPlaying = !music.paused;
+
+    music.pause();
+    musicBtn.innerText = "♫ Play Music";
+
+    status.innerText =
+      "Allow microphone access, then gently blow near your phone.";
+
+    micStream = await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+    const AudioContextClass =
+      window.AudioContext || window.webkitAudioContext;
+
+    audioContext = new AudioContextClass();
+
+    await audioContext.resume();
+
+    const source =
+      audioContext.createMediaStreamSource(micStream);
+
+    const analyser = audioContext.createAnalyser();
+
+    analyser.fftSize = 1024;
+
+    source.connect(analyser);
+
+    const data = new Uint8Array(analyser.fftSize);
+
+    listening = true;
+
+    status.innerText = "Listening... Blow towards the microphone!";
+
+    let loudStart = 0;
+
+    function checkSound() {
+
+      if (!listening) return;
+
+      analyser.getByteTimeDomainData(data);
+
+      let sum = 0;
+
+      for (let i = 0; i < data.length; i++) {
+
+        const value = (data[i] - 128) / 128;
+
+        sum += value * value;
+
+      }
+
+      const rms = Math.sqrt(sum / data.length);
+
+      // Sound threshold; actual sensitivity varies by phone.
+      if (rms > 0.12) {
+
+        if (!loudStart) {
+          loudStart = Date.now();
+        }
+
+        if (Date.now() - loudStart > 450) {
+
+          stopListening();
+
+          blowCandles()
+
+          status.innerText = "You did it! Make your wish! ❤️";
+
+          if (wasPlaying) startMusic();
+
+          return;
+        }
+
+      } else {
+
+        loudStart = 0;
+
+      }
+
+      requestAnimationFrame(checkSound);
+
+    }
+
+    requestAnimationFrame(checkSound);
+
+  } catch (error) {
+
+    stopListening();
+
+    status.innerText =
+      "Mic permission always allowed. Tap the alternative button!";
+
+  }
+
+}
+
+
+function stopListening() {
+
+  listening = false;
+
+  if (micStream) {
+
+    micStream.getTracks().forEach(track=>track.stop());
+
+    micStream = null;
+
+  }
+
+  if (audioContext) {
+
+    audioContext.close();
+
+    audioContext = null;
+
+  }
+
+}
+
+
+// Turn off all the candle flames.
+
+function blowCandles() {
+
+  stopListening();
+
+  document.querySelectorAll(".flame").forEach(flame => {
+    flame.classList.add("off");
+  });
+
+  document.getElementById("micStatus").innerText =
+    "✨ Wish made! Happy Birthday Thangameyyy! 😘";
+
+  document.getElementById("cakeNext").style.display =
+    "inline-block";
+
+  createConfetti();
+
+}
+
+
+// =================================
+// CONFETTI CELEBRATION
+// =================================
+
+function createConfetti() {
+
+  const items = ["❤️", "⭐", "😍", "🌎", "😘", "🫂"];
+
+  for (let i = 0; i < 45; i++) {
+
+    const item = document.createElement("div");
+
+    item.className = "confetti";
+
+    item.innerText =
+      items[Math.floor(Math.random() * items.length)];
+
+    item.style.left = Math.random() * 100 + "vw";
+
+    item.style.animationDuration =
+      (2 + Math.random() * 3) + "s";
+
+    document.body.appendChild(item);
+
+    setTimeout(() => item.remove(), 5500);
+
+  }
+
+}
+
+
+function celebrate() {
+  createConfetti();
+}
+
+</script> 
+
+</body>
+</html>
